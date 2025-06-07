@@ -1,110 +1,115 @@
-Проєкт Прогнозування Відтоку Клієнтів Банку
-Опис Проєкту
-Цей проєкт присвячений розробці моделі машинного навчання для прогнозування відтоку (churn) клієнтів банку. Основна мета — ідентифікувати клієнтів, які схильні до відтоку, щоб банк міг вжити проактивних заходів для їх утримання. Проєкт включає етапи розвідувального аналізу даних (EDA), попередньої обробки даних, розробки та порівняння різних моделей машинного навчання, точної настройки гіперпараметрів та симуляції розгортання моделі у веб-додатку.
-Вирішувана Проблема
-Банки часто стикаються з проблемою відтоку клієнтів, що призводить до значних фінансових втрат. Прогнозування відтоку дозволяє:
+# Bank Customer Churn Prediction Project
+This project focuses on developing a machine learning model to predict bank customer churn. The main goal is to identify customers who are likely to churn so the bank can take proactive measures to retain them. The project includes stages of exploratory data analysis (EDA), data preprocessing, development and comparison of various machine learning models, hyperparameter tuning, and simulation of model deployment in a web application.
 
-Своєчасно виявляти ризикових клієнтів.
-Розробляти цільові стратегії утримання.
-Оптимізувати маркетингові кампанії.
+## Problem Solved
+Banks frequently face customer churn, leading to significant financial losses. Churn prediction allows for:
 
-Ключові Компоненти та Функціональність
-Розвідувальний Аналіз Даних (EDA): Глибоке дослідження даних для виявлення закономірностей, розподілів та взаємозв'язків між ознаками та відтоком клієнтів.
-Передобробка Даних: Очищення даних, обробка категоріальних ознак (One-Hot Encoding), масштабування числових ознак, створення нових ознак (HasNoBalance).
-Моделювання: Розробка та оцінка прогностичних моделей, включаючи Logistic Regression, Random Forest та XGBoost.
-Оптимізація Моделі: Використання GridSearchCV та RandomizedSearchCV для тонкої настройки гіперпараметрів найкращої моделі (XGBoost).
-Вибір Найкращої Моделі: XGBoost був обраний як найкраща модель на основі метрик Precision, Recall, F1-Score та AUC-ROC для класу відтоку.
-Симуляція Розгортання (Deployment Simulation): Простий веб-додаток на Flask для демонстрації роботи моделі в "продакшені", де користувачі можуть ввести дані клієнта та отримати прогноз відтоку.
-Набір Даних
-Використаний набір даних Churn_Modelling.csv містить інформацію про 10 000 клієнтів банку та включає такі ознаки:
+* Timely identification of at-risk customers.
+* Development of targeted retention strategies.
+* Optimization of marketing campaigns.
 
-CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary.
-Цільова змінна: Exited (1 - відтік, 0 - залишився).
-Технологічний Стек
-Python 3.x
-Основні бібліотеки:
-pandas (для маніпуляції даними)
-numpy (для числових операцій)
-scikit-learn (для попередньої обробки даних та моделей)
-xgboost (для моделювання)
-matplotlib, seaborn (для візуалізації даних)
-joblib (для збереження/завантаження моделей)
-Flask (для веб-додатку)
-Встановлення та Запуск Проекту
-Щоб запустити цей проєкт локально, виконайте наступні кроки:
+## Key Components and Functionality
+* Exploratory Data Analysis (EDA): In-depth data exploration to uncover patterns, distributions, and relationships between features and customer churn.
+* Data Preprocessing: Data cleaning, handling categorical features (One-Hot Encoding), scaling numerical features, and creating new features (e.g., HasNoBalance).
+* Modeling: Development and evaluation of predictive models, including Logistic Regression, Random Forest, and XGBoost.
+* Model Optimization: Using GridSearchCV and RandomizedSearchCV for fine-tuning the hyperparameters of the best model (XGBoost).
+* Best Model Selection: XGBoost was chosen as the best model based on Precision, Recall, F1-Score, and AUC-ROC metrics for the churn class.
+* Deployment Simulation: A simple Flask web application to demonstrate the model's operation in a "production" environment, where users can input customer data and receive a churn prediction.
 
-Клонуйте репозиторій:
+## Dataset
+The Churn_Modelling.csv dataset was used, containing information on 10,000 bank customers and including the following features:
 
-Bash
+* CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary.
+* Target variable: Exited (1 - churned, 0 - remained).
 
-git clone <URL вашого репозиторію>
-cd <назва вашого репозиторію>
-Створіть та активуйте віртуальне середовище (рекомендовано):
+## Technology Stack
+* Python 3.13
+* Core Libraries:
+    * pandas (for data manipulation)
+    * numpy (for numerical operations)
+    * scikit-learn (for data preprocessing and models)
+    * xgboost (for modeling)
+    * matplotlib, seaborn (for data visualization)
+    * joblib (for saving/loading models)
+    * Flask (for the web application)
+  
+## Installation and Running the Project
+To run this project locally, follow these steps:
 
-Bash
+1. Clone the repository:
 
+```
+git clone <Your Repository URL>
+cd <Your Repository Name>
+```
+2. Create and activate a virtual environment (recommended):
+
+```
 python -m venv venv
-# Для Windows:
+# For Windows:
 .\venv\Scripts\activate
-# Для macOS/Linux:
+# For macOS/Linux:
 source venv/bin/activate
-Встановіть залежності:
+```
+3. Install dependencies:
 
-Bash
-
+```
 pip install -r requirements.txt
-Завантажте дані:
-Переконайтеся, що файл Churn_Modelling.csv знаходиться у папці data/.
+```
+4. Download the data:
+Ensure that the Churn_Modelling.csv file is located in the data/ folder.
 
-Навчіть та збережіть модель:
-Виконайте скрипт, який тренує модель і зберігає її, а також об'єкти для попередньої обробки:
+5. Train and save the model:
+Run the script that trains the model and saves it, along with preprocessing objects:
 
-Bash
-
+```
 python src/train_and_save_model.py
-Цей крок створить (або оновит) файли xgb_model.pkl, preprocessor.pkl, final_features_order.pkl у папці trained_models/.
+```
+This step will create (or update) the xgb_model.pkl, preprocessor.pkl, final_features_order.pkl files in the trained_models/ folder.
 
-Запустіть веб-додаток Flask:
+6. Run the Flask web application:
 
-Bash
-
+```
 cd web_app
 python app.py
-Відкрийте ваш браузер і перейдіть за адресою, яку виведе термінал (зазвичай http://127.0.0.1:5000/).
+```
+Open your browser and navigate to the address displayed in the terminal (usually http://127.0.0.1:5000/).
 
-Структура Проекту
+## Project Structure
+```
 .
 ├── data/
-│   └── Churn_Modelling.csv         # Сирі дані
+│   └── Churn_Modelling.csv         # Raw data
 ├── notebooks/
-│   └── Churn_Prediction_EDA_and_Modeling.ipynb # Jupyter Notebook для EDA та експериментів
+│   └── Churn_Prediction_EDA_and_Modeling.ipynb # Jupyter Notebook for EDA and experiments
 ├── src/
-│   └── train_and_save_model.py     # Скрипт для навчання та збереження фінальної моделі та препроцесора
-├── trained_models/                 # Збережені об'єкти моделі та препроцесингу
+│   └── train_and_save_model.py     # Script for training and saving the final model and preprocessor
+├── trained_models/                 # Saved model and preprocessing objects
 │   ├── xgb_model.pkl
 │   ├── preprocessor.pkl
 │   └── final_features_order.pkl
 ├── web_app/
-│   ├── app.py                      # Основний файл Flask-додатку
+│   ├── app.py                      # Main Flask application file
 │   └── templates/
-│       └── index.html              # HTML-шаблон для веб-інтерфейсу
-├── requirements.txt                # Список залежностей Python
-└── README.md                       # Цей файл
-Результати та Висновки
-Найкраща модель: XGBoost показав найкращі результати, досягнувши таких показників на тестовому наборі:
-AUC-ROC: ~0.866
-Recall (для класу відтоку): ~0.75
-F1-Score (для класу відтоку): ~0.61
-Ключові фактори відтоку (за результатами EDA та аналізу коефіцієнтів/важливості ознак):
-Клієнти з низьким балансом або нульовим балансом.
-Клієнти з більшою кількістю продуктів (вище 2).
-Географічне розташування (наприклад, клієнти з Німеччини можуть мати вищий ризик відтоку).
-Неактивні учасники.
-Вік клієнта.
-(Цей розділ можна деталізувати, додавши більше інсайтів з вашого EDA)
-Майбутні Покращення (Optional)
-Додати більше інженерії ознак (наприклад, інтеракції між ознаками).
-Випробувати інші моделі (наприклад, LightGBM, CatBoost).
-Розширити веб-додаток (додати графіки, адмін-панель, базу даних).
-Реалізувати автоматизований перетренування моделі.
-Здійснити справжнє розгортання за допомогою Docker та хмарних сервісів (AWS, Azure, GCP).
+│       └── index.html              # HTML template for the web interface
+├── requirements.txt                # List of Python dependencies
+└── README.md                       # This file
+```
+
+## Results and Conclusions
+* Best Model: XGBoost showed the best results, achieving the following metrics on the test set:
+    * AUC-ROC: ~0.866
+    * Recall (for churn class): ~0.75
+    * F1-Score (for churn class): ~0.61
+* Key Churn Factors (based on EDA and analysis of coefficients/feature importance):
+    * Customers with low or zero balance.
+    * Geographical location (e.g., customers from Germany may have a higher churn risk).
+    * Inactive members.
+    * Customer age.
+
+## Future Improvements (Optional)
+* Add more feature engineering (e.g., interactions between features).
+* Experiment with other models (e.g., LightGBM, CatBoost).
+* Extend the web application (add charts, admin panel, database).
+* Implement automated model retraining.
+* Perform real deployment using Docker and cloud services (AWS, Azure, GCP).
